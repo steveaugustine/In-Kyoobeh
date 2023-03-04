@@ -76,7 +76,7 @@ class DashActivity : AppCompatActivity() {
 
         val kyooban =User()
         val database =
-            Firebase.database("https://my-first-app-steve-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            Firebase.database("link here")
 
         mAuth= FirebaseAuth.getInstance()
         val user= mAuth.currentUser
