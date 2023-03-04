@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:fontFamily="@font/arsenal_bold"
-        android:text="@string/in_kyoobeh"
+        android:text="Present.IO"
         android:textColor="#EAE1E4"
         android:textSize="55sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="150dp"
-        android:fontFamily="@font/arsenal_bold"
-        android:text="@string/number_of_people"
+        android:fontFamily="monospace"
+        android:text="Attending"
         android:textColor="#E8E1E1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,16 +54,36 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.058" />
 
-    <TextView
-        android:id="@+id/tview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#E3E6E8"
+    <ScrollView
+        android:layout_width="312dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/border"
+        android:hapticFeedbackEnabled="true"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+
+        app:layout_constraintVertical_bias="0.818">
+
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:paddingLeft="6dip"
+            android:paddingRight="6dip"
+
+
+
+            />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

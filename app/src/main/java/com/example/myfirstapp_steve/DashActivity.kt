@@ -12,6 +12,7 @@ import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
@@ -22,10 +23,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+
 import kotlinx.android.synthetic.main.activity_main.*
 import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 
 class DashActivity : AppCompatActivity() {
@@ -79,13 +82,26 @@ class DashActivity : AppCompatActivity() {
             Firebase.database("https://my-first-app-steve-default-rtdb.asia-southeast1.firebasedatabase.app/")
 
         mAuth= FirebaseAuth.getInstance()
+
         val user= mAuth.currentUser
         val myref=database.getReference("User")
         val db=FirebaseDatabase.getInstance().getReference("User")
 
+        var listview=findViewById<ListView>(R.id.list)
+
+        var userlist: ArrayList<String> =ArrayList()
+        val adapter: ArrayAdapter<String?> = ArrayAdapter<String?>(
+            this@DashActivity,
+            android.R.layout.simple_list_item_1,
+            userlist as List<String?>
+        )
+
+        // on below line we are setting adapter for our list view.
+
+        listview.adapter = adapter
 
 
-        textView2.text = "Number of People"
+        textView2.text = "Attending"
         val mainactivity = MainActivity()
 
         //wifi
@@ -106,22 +122,40 @@ class DashActivity : AppCompatActivity() {
             if (wifiInfo.supplicantState == SupplicantState.COMPLETED) {
                 ssid = wifiInfo.ssid
                 println(ssid)
-                textView2.text = ssid
+                //textView2.text = ssid
             } else {
                 ssid = "no wifi"
             }
-            textView2.text = ssid
+            //textView2.text = ssid
             println("clickworking")
 
-            myref.child(user?.displayName.toString()).setValue(ssid)
+            myref.child(user?.displayName.toString().replace("."," ")).setValue(ssid)
 
             mSocket.emit("counter")
 
             myref.child("").get().addOnSuccessListener {
                 println("this value is ${it.value}")
                 println("readd")
+                var map:HashMap<String, Any>
+                        = HashMap<String, Any> ()
+                map= it.value as HashMap<String, Any>
+                var temp=""
+                for(key in map.keys){
+                    if("TinkerSpace" in map[key].toString()){
+                        println("  if conditon is working $key")
+
+                        temp=temp+" "+key
+                        //textView2.text=temp
+                        userlist.add(key)
+                        adapter.notifyDataSetChanged()
+
+
+
+                    }
+                    println(key)
+
+                }
                 val yourData: HashMap<String, Any> = it.value as HashMap<String, Any>
-                textView2.text= yourData.toString()
             }.addOnFailureListener {
                 Log.e("firebase", "Error getting data", it)
                 println("erooooor")
@@ -169,6 +203,11 @@ class DashActivity : AppCompatActivity() {
             })
 
 
+        }
+        imageView.setOnLongClickListener(){
+
+            
+            return@setOnLongClickListener true
         }
 
 
@@ -232,6 +271,10 @@ class DashActivity : AppCompatActivity() {
         val periodicWorkRequest= PeriodicWorkRequest.Builder(Myservice::class.java,15,TimeUnit.MINUTES).addTag("Myservice").build()
         WorkManager.getInstance(this).enqueueUniquePeriodicWork("Myservice",ExistingPeriodicWorkPolicy.REPLACE,periodicWorkRequest)
     }
+
+
+
+
 
 
 

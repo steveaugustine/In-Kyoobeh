@@ -20,6 +20,7 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
+import com.google.android.gms.common.api.Api
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -27,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+
 import kotlinx.android.synthetic.main.activity_dash.*
 import kotlinx.android.synthetic.main.activity_main.*
 import pub.devrel.easypermissions.AppSettingsDialog
@@ -116,6 +118,9 @@ open class MainActivity : AppCompatActivity(), PermissionCallbacks {
         }
 
     }
+
+
+
      fun hasLocationPermission() =
         hasPermissions(
             this,

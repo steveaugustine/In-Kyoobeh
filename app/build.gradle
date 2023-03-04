@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.10'
 }
 
 android {
@@ -61,14 +60,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
-
-    implementation("io.github.jan-tennert.supabase:postgrest-kt:0.7.6")
-
-    //add ktor client engine (if you don't already have one, see https://ktor.io/docs/http-client-engines.html for all engines)
-    //e.g. the CIO engine
-    implementation("io.ktor:ktor-client-cio:2.3.3")
+    
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:30.3.1')

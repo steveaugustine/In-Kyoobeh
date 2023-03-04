@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+
 import kotlinx.android.synthetic.main.activity_sign2.*
 
 
@@ -37,9 +38,21 @@ class SignActivity2 : AppCompatActivity() {
 
         button_first.setOnClickListener(){
             signIn()
+
+
+
         }
 
         }
+
+    private fun supAUth(){
+         {
+
+        }
+
+
+
+    }
     private fun signIn(){
         val signInIntent=googleSignInClient.signInIntent
         startActivityForResult(signInIntent,RC_SIGN_IN)
