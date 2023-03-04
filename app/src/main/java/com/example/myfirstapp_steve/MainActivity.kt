@@ -50,7 +50,7 @@ open class MainActivity : AppCompatActivity(), PermissionCallbacks {
         setContentView(R.layout.activity_dash)
 
 
-        val database= Firebase.database("https://my-first-app-steve-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        val database= Firebase.database("")
 
 
         val periodicWorkRequest= PeriodicWorkRequest.Builder(Myservice::class.java,15, TimeUnit.MINUTES).addTag("Myservice").build()
