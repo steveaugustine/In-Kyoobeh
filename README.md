@@ -1,13 +1,23 @@
 # Present.io
 
 
-Present.io is a attendance taking app that revolutionalizes the attendance taking process.
+Present.io is an attendance taking app that revolutionalizes the attendance taking process.
 Usually the process of taking attendance in a classroom/event is a time consuming and cumbersome process.
-Our app solves this problem by asking all users to connect to the local wifi of the class/event and tapping the cube on their Present.io app.
+Our app solves this problem by asking all users to connect to the local wifi of the class/event and thus collects a list of attendees conected to the wifi.
 
 Present.io uses wifimanager to access the current wifi of the user and stores it in a firebase realtime database.
 The user is allowed to filter out the wifi name/classname they wish to access.
 On tapping the hovering cube they get a list of all attendees.
+
+
+
+#How to use
+
+Start the app
+Allow location permissions.
+Click Login to login with google authentictaion(Firebase)
+enter the wifi ssid in the text-box
+Click on the hovering cube to view the list of all attendees.
 
 
 
