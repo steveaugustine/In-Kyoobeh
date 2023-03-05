@@ -50,7 +50,7 @@ open class MainActivity : AppCompatActivity(), PermissionCallbacks {
         setContentView(R.layout.activity_dash)
 
 
-        val database= Firebase.database("")
+        val database= Firebase.database("https://my-first-app-steve-default-rtdb.asia-southeast1.firebasedatabase.app/")
 
 
         val periodicWorkRequest= PeriodicWorkRequest.Builder(Myservice::class.java,15, TimeUnit.MINUTES).addTag("Myservice").build()
@@ -102,7 +102,7 @@ open class MainActivity : AppCompatActivity(), PermissionCallbacks {
 
             }
             println(ssid)
-            myref.child(user?.displayName.toString()).setValue(ssid)
+            myref.child(user?.displayName.toString().replace("."," ")).setValue(ssid)
             // Your Code
         }, 3000)
 

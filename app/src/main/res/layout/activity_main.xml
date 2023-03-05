@@ -12,78 +12,85 @@
         android:layout_width="213dp"
         android:layout_height="165dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/this_is_a_cube"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447"
+        app:layout_constraintTop_toBottomOf="@+id/selectedfoodtext"
         app:srcCompat="@drawable/ky" />
 
     <TextView
         android:id="@+id/selectedfoodtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/arsenal_bold"
         android:text="Present.IO"
         android:textColor="#EAE1E4"
         android:textSize="55sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="150dp"
         android:fontFamily="monospace"
         android:text="Attending"
         android:textColor="#E8E1E1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ScrollView
-        android:layout_width="312dp"
-        android:layout_height="200dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="335dp"
+        android:layout_height="62dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/border"
         android:hapticFeedbackEnabled="true"
+        android:paddingLeft="6dip"
+        android:paddingRight="6dip"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
 
-        app:layout_constraintVertical_bias="0.818">
+        app:layout_constraintTop_toBottomOf="@+id/inputtext">
 
 
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#FFFFFF"
-            android:paddingLeft="6dip"
-            android:paddingRight="6dip"
 
+            android:background="#FFFFFF"
 
 
             />
     </ScrollView>
+
+    <EditText
+        android:id="@+id/inputtext"
+        android:layout_width="184dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

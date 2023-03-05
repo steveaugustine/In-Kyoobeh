@@ -11,6 +11,7 @@ import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -79,7 +80,7 @@ class DashActivity : AppCompatActivity() {
 
         val kyooban =User()
         val database =
-            Firebase.database("link here")
+            Firebase.database("https://my-first-app-steve-default-rtdb.asia-southeast1.firebasedatabase.app/")
 
         mAuth= FirebaseAuth.getInstance()
 
@@ -113,8 +114,14 @@ class DashActivity : AppCompatActivity() {
 
         val name=""
         //click listener
-
+        var cond1=inputtext.text.toString()
+        inputtext.setImeActionLabel(cond1, KeyEvent.KEYCODE_ENTER)
         imageView.setOnClickListener() {
+
+            userlist.clear()
+
+
+
 
             val wifiManager = getSystemService(Context.WIFI_SERVICE) as WifiManager
 
@@ -136,13 +143,22 @@ class DashActivity : AppCompatActivity() {
             myref.child("").get().addOnSuccessListener {
                 println("this value is ${it.value}")
                 println("readd")
+                var cond=inputtext.text.toString()
+                inputtext.setText(cond)
+                inputtext.hint = " "
+
+                println("input is working $cond")
                 var map:HashMap<String, Any>
                         = HashMap<String, Any> ()
                 map= it.value as HashMap<String, Any>
                 var temp=""
+                
                 for(key in map.keys){
-                    if("TinkerSpace" in map[key].toString()){
+                    println("valus is ${map[key].toString().replace("\"","")}")
+
+                    if(cond.toString().contains(map[key].toString().replace("\"",""))){
                         println("  if conditon is working $key")
+                        println("valus is ${map[key].toString().replace("\"","")}")
 
                         temp=temp+" "+key
                         //textView2.text=temp
@@ -204,11 +220,7 @@ class DashActivity : AppCompatActivity() {
 
 
         }
-        imageView.setOnLongClickListener(){
 
-            
-            return@setOnLongClickListener true
-        }
 
 
 
